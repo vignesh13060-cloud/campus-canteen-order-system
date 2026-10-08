@@ -59,7 +59,7 @@ function saveMenu() {
   catch (e) { return false; }
 }
 const MENU = loadMenu();
-const setSrc = m => m.src = m.photo || (m.img ? `images/${m.img}.jpg` : "");
+const setSrc = m => m.src = m.photo || (m.img ? `${m.img}.jpg` : "");
 MENU.forEach(setSrc);
 
 let CATS = ["All"];
