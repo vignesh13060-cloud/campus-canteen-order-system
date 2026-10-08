@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kitchen Counter — Campus Canteen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Moving background (filled by script.js) -->
+<div class="bg" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="floaters" id="floaters"></div>
+</div>
+
+<!-- ============ PAGE 1 : MENU ============ -->
+<section class="page active" id="pageMenu">
+  <header class="top">
+    <div class="brand">
+      <h1 class="display">KITCHEN COUNTER</h1>
+      <p>Block C canteen · today's menu</p>
+    </div>
+    <span class="top-btns"><button class="ghost-btn" id="btnManage">Manage menu</button>
+    <button class="ghost-btn" id="btnTokens">My tokens</button></span>
+  </header>
+
+  <main class="menu">
+    <div class="tabs" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <div class="cartbar" id="cartbar">
+    <div class="cb-info">
+      <span class="cb-count" id="cbCount">0 items</span>
+      <span class="cb-total mono" id="cbTotal">₹0</span>
+    </div>
+    <button class="cb-btn" id="btnViewOrder">View order</button>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 : ORDER DETAILS ============ -->
+<section class="page" id="pageOrder">
+  <header class="sub-top">
+    <button class="back-btn" id="orderBack" aria-label="Back to menu">‹</button>
+    <div>
+      <h2 class="display">Your order</h2>
+      <p class="mono" id="orderMeta">0 items</p>
+    </div>
+  </header>
+
+  <div class="order-wrap">
+    <div id="orderList"></div>
+  </div>
+
+  <div class="bottom-total" id="orderBar">
+    <div>
+      <span class="mono lbl">TOTAL</span>
+      <span class="big mono" id="orderTotal">₹0</span>
+    </div>
+    <button class="place-btn" id="placeBtn">Place order</button>
+  </div>
+</section>
+
+<!-- ============ PAGE : MANAGE MENU ============ -->
+<section class="page" id="pageManage">
+  <header class="sub-top">
+    <button class="back-btn" id="manageBack" aria-label="Back to menu">‹</button>
+    <div>
+      <h2 class="display">Manage menu</h2>
+      <p class="mono" id="manageMeta">0 items</p>
+    </div>
+    <button class="place-btn small" id="btnAddItem">Add item</button>
+  </header>
+  <div class="order-wrap"><div id="manageList"></div></div>
+</section>
+
+<!-- ============ PAGE 3 : TOKEN ============ -->
+<section class="page" id="pageToken">
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <div class="token-wrap">
+    <div class="token-card" id="tokenCard">
+      <div class="tick"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M14 27l8 8 16-17"/></svg></div>
+      <p class="tok-title">Order placed</p>
+      <p class="tok-sub">Your token number</p>
+      <div class="tok-num mono" id="tokNum">#000</div>
+      <p class="tok-note">Collect at the counter when your number is called.</p>
+      <div class="tok-items" id="tokItems"></div>
+      <div class="tok-total"><span>Total paid</span><span class="mono" id="tokTotal">₹0</span></div>
+      <button class="place-btn wide print" id="btnPrint">Print bill</button>
+      <label class="auto-print"><input type="checkbox" id="autoPrint"> Print automatically when order is placed</label>
+      <button class="place-btn wide" id="btnNew">Order more food</button>
+    </div>
+
+    <div class="history">
+      <div class="hist-head">
+        <h3 class="display">Saved tokens</h3>
+        <span>
+          <button class="link-btn" id="btnHistBack">Back to menu</button>
+          <button class="link-btn" id="btnClear">Clear all</button>
+        </span>
+      </div>
+      <div id="histList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Item popup -->
+<div class="overlay" id="overlay">
+  <div class="popup" id="popupCard"></div>
+</div>
+
+<!-- Bill that goes to the printer (only visible when printing) -->
+<div id="receipt"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
